@@ -111,7 +111,7 @@ async def find_user_by_session_and_verify(
             logger.warning(f"No verification session found for session ID: {session_id}")
             return None
 
-        discord_id, expiry_time, _oauth_state = session_data
+        discord_id, _expiry_time, _oauth_state = session_data
 
         current_time = datetime.now().isoformat()
         user_res = await supabase.table("users").select("*").eq(
